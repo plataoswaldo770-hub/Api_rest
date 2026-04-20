@@ -11,13 +11,17 @@
         <input type="hidden" id="id">
         <input type="text" id="nombre" placeholder="Nombre del usuario">
 
-        <select id="tipo">
+        <select id="tipo" onchange="actualizarMarcas()">
             <option value="">Tipo</option>
             <option value="Laptop">💻 Laptop</option>
             <option value="PC">🖥️ PC</option>
             <option value="Impresora">🖨️ Impresora</option>
             <option value="Monitor">📺 Monitor</option>
             <option value="Celular">📱 Celular</option>
+        </select>
+
+        <select id="marca">
+            <option value="">Marca</option>
         </select>
 
         <select id="estado">
@@ -36,6 +40,14 @@
             <option value="Operaciones">⚙️ Operaciones</option>
         </select>
 
+        <textarea id="descripcion" rows="3" placeholder="Descripción o detalles del dispositivo..."></textarea>
+
+        <div style="margin: 10px 0; background: #34495e; padding: 10px; border-radius: 8px;">
+            <label style="display: block; margin-bottom: 5px;">Subir foto del equipo:</label>
+            <input type="file" id="imagen" accept="image/*">
+            <img id="preview" src="" style="display: none; max-width: 80px; margin-top: 10px; border-radius: 5px; border: 2px solid white;">
+        </div>
+
         <div class="buttons">
             <button onclick="create()">💾 Guardar</button>
             <button onclick="update()">🔄 Actualizar</button>
@@ -48,10 +60,12 @@
             <thead>
                 <tr>
                     <th>ID</th>
+                    <th>Foto</th>
                     <th>Nombre</th>
                     <th>Tipo</th>
-                    <th>Estado</th>
+                    <th>Marca</th> <th>Estado</th>
                     <th>Área</th>
+                    <th>Descripción</th>
                     <th>Fecha</th>
                     <th>Acciones</th>
                 </tr>
@@ -60,6 +74,5 @@
         </table>
     </div>
     <script src="script.js"></script>
-
 </body>
 </html>
