@@ -13,7 +13,7 @@ def home():
 
 # 🔹 Validación
 def validar(data):
-    campos = ["nombre", "tipo", "estado", "area"]
+    campos = ["nombre", "tipo", "marca", "estado", "area", "descripcion"]
     for c in campos:
         if c not in data or not data[c]:
             return False, f"El campo '{c}' es obligatorio"
@@ -46,8 +46,11 @@ def create():
         "id": next_id,
         "nombre": data["nombre"],
         "tipo": data["tipo"],
+        "marca": data["marca"], # 🏷️ Nuevo campo de marca
         "estado": data["estado"],
         "area": data["area"],
+        "descripcion": data["descripcion"],
+        "imagen": data.get("imagen", ""),
         "fecha_registro": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     }
 
@@ -72,8 +75,11 @@ def update(id):
     d.update({
         "nombre": data["nombre"],
         "tipo": data["tipo"],
+        "marca": data["marca"], # 🏷️ Actualiza la marca
         "estado": data["estado"],
-        "area": data["area"]
+        "area": data["area"],
+        "descripcion": data["descripcion"],
+        "imagen": data.get("imagen", d.get("imagen", ""))
     })
 
     return jsonify(d)
